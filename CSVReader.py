@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import re
 
 '''
@@ -7,14 +8,12 @@ attraverso i suoi metodi viste sui dati.
 '''
 class CSVReader:
 
-    __perfect_match = re.compile('27[0-9]{9}')
+    __perfect_match = re.compile('^27[0-9]{9}$')
 
     def __init__(self,file) -> None:
         self.df=pd.read_csv(file)
         self.__numeri_validi = None
         self.__numeri_non_validi = None
-        self.__identificativi_validi = None
-        self.__identificativi_non_validi = None
     
     '''
     Resituisce la lista dei numeri presenti nel file.
@@ -36,24 +35,26 @@ class CSVReader:
     def lista_numeri_non_validi(self):
         if self.__numeri_non_validi is None:
             self.__numeri_non_validi = [numero for numero in self.lista_numeri() if numero not in self.lista_numeri_validi()]
-        return self.__numeri_non_validi
-         
+        return self.__numeri_non_validi     
     
-    def lista_identificativi(self):
-        return [item[0] for item in self.df.values]
+    def dump_lista_numeri_validi(self):
+        if os.path.isfile('numeri_validi.txt'):
+            os.remove('numeri_validi.txt')
+        with open('numeri_validi.txt', 'w') as f:
+            for item in self.lista_numeri_validi():
+                f.write("%s\n" % item)
     
-    def lista_identificativi_validi(self):
-        if self.__identificativi_validi is None:
-            self.__identificativi_validi = [item[0] for item in self.df.values if item[1] in self.lista_numeri_validi()]
-        return self.__identificativi_validi
-    
-    def lista_identificativi_non_validi(self):
-        if self.__identificativi_non_validi is None:
-            self.__identificativi_non_validi = [item[0] for item in self.df.values if item[0] not in self.lista_identificativi_validi()]
-        return self.__identificativi_non_validi
+    def dump_lista_numeri_non_validi(self):
+        if os.path.isfile('numeri_non_validi.txt'):
+            os.remove('numeri_non_validi.txt')
+        with open('numeri_non_validi.txt','w') as f:
+            for item in self.lista_numeri_non_validi():
+                f.write("%s\n" % item)
 
 if __name__ == '__main__':
     reader = CSVReader('data.csv')
+    reader.dump_lista_numeri_validi()
+    reader.dump_lista_numeri_non_validi()
     
 
 

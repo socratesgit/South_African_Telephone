@@ -20,5 +20,7 @@ class TestCSVReader(unittest.TestCase):
         for item in self.reader.lista_numeri_non_validi():
             self.assertFalse(self.perfect_match.match(item))
 
+
+
 if __name__ == '__main__':
     unittest.main()
