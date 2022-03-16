@@ -4,11 +4,8 @@ Questo progetto Python (3.X) ha come obiettivo quello di estrarre da un file for
 Il codice è suddiviso nei seguenti moduli:
 
 1. ### CSVReader
-    si occupa di produrre, dato in input un file 'data.csv', due file:
-        - 'numeri_validi.txt', il quale contiene i numeri validi
-        - 'numeri_non_validi.txt', il quale contiene i numeri non validi
+    si occupa di produrre, dato in input un file __'data.csv'__, due file: __'numeri_validi.txt'__, il quale contiene i numeri validi e __'numeri_non_validi.txt'__, il quale contiene i numeri non validi
 
 2. ### Helper
-    si occupa di produrre un file 'numeri_riparati.txt' dove cerca di estrapolare
-    dati i numeri presenti nel file 'numeri_non_validi.txt' attraverso varie euristiche
-    dei numeri validi.
+    si occupa di produrre un file __'numeri_riparati.txt'__ dove cerca di estrapolare
+    dati i numeri presenti nel file __'numeri_non_validi.txt'__ attraverso varie euristiche dei numeri validi.
