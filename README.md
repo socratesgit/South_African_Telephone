@@ -9,3 +9,4 @@ Il codice è suddiviso nei seguenti moduli:
 2. ### Helper
     si occupa di produrre un file __'numeri_riparati.txt'__ dove cerca di estrapolare
     dati i numeri presenti nel file __'numeri_non_validi.txt'__ attraverso varie euristiche dei numeri validi.
+    Inoltre, se viene lanciato da linea di comando (**python Helper.py**), attraverso un menu da linea comando permette all'utente di inserire numeri di telefono da verificare e, nel caso non siano validi, propone alcune alternative.
