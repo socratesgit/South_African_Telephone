@@ -5,8 +5,8 @@ Il codice è suddiviso nei seguenti moduli:
 
 1. ### CSVReader
     si occupa di produrre, dato in input un file 'data.csv', due file:
-        - 'numeri_validi.txt', il quale contiene i numeri validi
-        - 'numeri_non_validi.txt', il quale contiene i numeri non validi
+        1. 'numeri_validi.txt', il quale contiene i numeri validi
+        2. 'numeri_non_validi.txt', il quale contiene i numeri non validi
 
 2. ### Helper
     si occupa di produrre un file 'numeri_riparati.txt' dove cerca di estrapolare
