@@ -4,10 +4,10 @@ import re
 
 class Helper:
 
-    __perfect_match = re.compile('^27[0-9]{9}$')
-    __manca_prefisso = re.compile('^[0-9]{9}$')
-    __prefisso_sbagliato = re.compile('^[0-9]{11}$')
-    __contiene_altro = re.compile('27[0-9]{9}')
+    perfect_match = re.compile('^27[0-9]{9}$')
+    manca_prefisso = re.compile('^[0-9]{9}$')
+    prefisso_sbagliato = re.compile('^[0-9]{11}$')
+    contiene_altro = re.compile('27[0-9]{9}')
 
 
     def __init__(self,file):
@@ -17,21 +17,21 @@ class Helper:
             self.__lista = f.read().splitlines()
     
     def lista_numeri_senza_prefisso(self):
-        return [item for item in self.__lista if self.__manca_prefisso.match(item)]
+        return [item for item in self.__lista if self.manca_prefisso.match(item)]
     
     def lista_numeri_contengono_altro(self):
-        return [item for item in self.__lista if self.__contiene_altro.match(item)]
+        return [item for item in self.__lista if self.contiene_altro.match(item)]
 
     def lista_numeri_prefisso_sbagliato(self):
-        return [item for item in self.__lista if self.__prefisso_sbagliato.match(item)]
+        return [item for item in self.__lista if self.prefisso_sbagliato.match(item)]
     
-    def ripara_senza_prefisso(self,numero_senza_prefisso):
+    def ripara_senza_prefisso(numero_senza_prefisso):
         return "27"+numero_senza_prefisso;
     
-    def ripara_contiene_altro(self,numero_contiene_altro):
-        return re.search(self.__contiene_altro,numero_contiene_altro).group()
+    def ripara_contiene_altro(numero_contiene_altro):
+        return re.search(Helper.contiene_altro,numero_contiene_altro).group()
     
-    def ripara_prefisso_sbagliato(self,numero_prefisso_sbagliato):
+    def ripara_prefisso_sbagliato(numero_prefisso_sbagliato):
         return "27"+numero_prefisso_sbagliato[2:]
 
     def dump_numeri_riparati(self):
@@ -57,6 +57,27 @@ class Helper:
                 f.write("%s -> %s\n" % (item,self.ripara_prefisso_sbagliato(item)))
 
 if __name__ == '__main__':
-    helper = Helper('numeri_non_validi.txt')
-    helper.dump_numeri_riparati()
+    print("Ciao! Sono il modulo Helper.\nTi aiutero' a capire se il numero che introduci e' un numero sudafricano valido.")
+    print("Qualora il numero che hai introdotto non risulterà essere valido ti fornirò delle alternative che lo siano!")
+    while True:
+        query = input("Che numero vuoi cercare oggi?\n(Se vuoi uscire dal programma clicca INVIO)\n")
+        if(not query):
+            break
+        if Helper.perfect_match.match(query):
+            print("Il numero che hai cercato e' valido!\n")
+            continue
+        if Helper.manca_prefisso.match(query):
+            print("Il numero che hai cercato non e' valido perchè sembra mancargli il prefisso.\n")
+            print("Prova con: %s\n" % Helper.ripara_senza_prefisso(query))
+            continue
+        if Helper.prefisso_sbagliato.match(query):
+            print("Il numero che hai cercato non e' valido. Forse hai sbagliato il prefisso!.\n")
+            print("Prova con: %s\n" % Helper.ripara_prefisso_sbagliato(query))
+            continue
+        if Helper.contiene_altro.match(query):
+            print("Il numero che hai cercato non e' valido, ma contiene al suo interno un numero valido!")
+            print("Prova con: %s\n" % Helper.ripara_contiene_altro(query))
+            continue
+        
+        
     
