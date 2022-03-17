@@ -7,8 +7,7 @@ Il codice è suddiviso nei seguenti moduli:
     si occupa di produrre, dato in input un file _'data.csv'_, due file: _'numeri\_validi.txt'_, il quale contiene i numeri validi e _'numeri\_non\_validi.txt'_, il quale contiene i numeri non validi
 
 2. ### Helper
-    si occupa di produrre un file  _'numeri\_riparati.txt'_  dove cerca di estrapolare
-    dati i numeri presenti nel file _'numeri\_non\_validi.txt'_ attraverso varie euristiche dei numeri validi.
+    si occupa di produrre un file  _'numeri\_riparati.txt'_  dove cerca di estrapolare dei numeri validi dati i numeri presenti nel file _'numeri\_non\_validi.txt'_ attraverso varie euristiche.
     Inoltre, se viene lanciato da linea di comando (_'python Helper.py'_), attraverso un menu da linea comando permette all'utente di inserire numeri di telefono da verificare e, nel caso non siano validi, propone alcune alternative.
 
 ## WORKFLOW
