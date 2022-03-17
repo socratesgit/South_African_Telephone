@@ -13,9 +13,10 @@ Il codice è suddiviso nei seguenti moduli:
 ## WORKFLOW
 
 1. Clona la repo in locale
-2. Crea un ambiente virtuale con _python -m venv [nome ambiente virtuale]_
-3. Installa le dipendenze con _pip install -r requirements.txt_
-4. Lancia il comando _python run.py_
+2. Muoviti dentro la repo
+3. Crea un ambiente virtuale con _python -m venv [nome ambiente virtuale]_
+4. Installa le dipendenze con _pip install -r requirements.txt_
+5. Lancia il comando _python run.py_
 
-A questo punto, se non fossero stati già presenti, dovrebbero essere stati generati i file _'numeri\_validi.txt'_, _'numeri\_non\_validi_ e _'numeri\_riparati.txt'_. Inoltre, nella cartella _img_ troverete alcuni grafici prodotti dal programma _run.py_ che danno alcune informazioni rispetto ai risultati delle computazioni dei moduli.
+A questo punto, se non fossero stati già presenti, dovrebbero essere stati generati i file _'numeri\_validi.txt'_, _'numeri\_non\_validi.txt'_ e _'numeri\_riparati.txt'_. Inoltre, nella cartella _img_ troverete alcuni grafici prodotti dal programma _run.py_ che danno alcune informazioni rispetto ai risultati delle computazioni dei moduli.
 Qualora si voglia interrogare direttamente il modulo **Helper** per verificare qualche numero, si può inizializzare un programma interattivo da linea di comando con _python Helper.py_.
