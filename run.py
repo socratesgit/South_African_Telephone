@@ -1,5 +1,5 @@
-from CSVReader import CSVReader
-from Helper import Helper
+from modules.CSVReader import CSVReader
+from modules.Helper import Helper
 import matplotlib.pyplot as plt
 import os
 
@@ -35,7 +35,7 @@ plt.bar(legenda2, valori, color ='maroon',
         width = 0.4)
 
 if os.path.isfile('img/riparati.png'):
-    os.remove('img/.riparati.png')
+    os.remove('img/riparati.png')
 
 plt.savefig('img/riparati.png')
 plt.close()

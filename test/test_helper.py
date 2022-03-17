@@ -1,6 +1,6 @@
 import unittest
 import re
-from Helper import Helper
+from modules.Helper import Helper
 
 class TestCSVReader(unittest.TestCase):
 

@@ -1,4 +1,4 @@
-from CSVReader import CSVReader
+from modules.CSVReader import CSVReader
 import unittest
 import re
 

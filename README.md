@@ -21,3 +21,15 @@ Il codice è suddiviso nei seguenti moduli:
 
 A questo punto, se non fossero stati già presenti, dovrebbero essere stati generati i file _'numeri\_validi.txt'_, _'numeri\_non\_validi.txt'_ e _'numeri\_riparati.txt'_. Inoltre, nella cartella _img_ troverete alcuni grafici prodotti dal programma _run.py_ che danno alcune informazioni rispetto ai risultati delle computazioni dei moduli.
 Qualora si voglia interrogare direttamente il modulo **Helper** per verificare qualche numero, si può inizializzare un programma interattivo da linea di comando con _python Helper.py_.
+
+## EURISTICHE
+
+Il modulo **Helper** utilizza le seguenti euristiche per cercare di ricavare numeri validi:
+
+1. aggiunta di prefissi
+2. modifica di prefissi
+3. ricerca di una sottostringa che soddisfa i criteri di numero valido
+
+## TEST
+
+Per lanciare i test è sufficiente porsi nella cartella del progetto e impartire il comando _python -m unittest discover test_.

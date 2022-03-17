@@ -1,13 +1,15 @@
-from CSVReader import CSVReader
+from . import CSVReader
 import os
 import re
 
-'''
-Questo modulo offre euristiche per tentare di riparare numeri non validi.
-Inoltre, è disponibile una versione interattiva da linea di comando se il modulo viene lanciato
-come main.
-'''
+
 class Helper:
+
+    '''
+    Questo modulo offre euristiche per tentare di riparare numeri non validi.
+    Inoltre, è disponibile una versione interattiva da linea di comando se il modulo viene lanciato
+    come main.
+    '''
 
     perfect_match = re.compile('^27[0-9]{9}$')
     manca_prefisso = re.compile('^[0-9]{9}$')
@@ -20,48 +22,55 @@ class Helper:
         with open('numeri_non_validi.txt','r') as f:
             self.__lista = f.read().splitlines()
     
-    '''
-    Restituisce la lista dei numeri senza prefisso all'interno del file 'numeri_non_validi.txt'.
-    '''
+    
     def lista_numeri_senza_prefisso(self):
+        '''
+        Restituisce la lista dei numeri senza prefisso all'interno del file 'numeri_non_validi.txt'.
+        '''
         return [item for item in self.__lista if self.manca_prefisso.match(item)]
-    '''
-    Restituisce la lista dei numeri che contengono un numero valido come sottostringa
-    all'interno del file 'numeri_non_validi.txt'.
-    '''
+    
     def lista_numeri_contengono_altro(self):
+        '''
+        Restituisce la lista dei numeri che contengono un numero valido come sottostringa
+        all'interno del file 'numeri_non_validi.txt'.
+        '''
         return [item for item in self.__lista if self.contiene_altro.match(item)]
 
-    '''
-    Restituisce la lista dei numeri con prefisso sbagliato all'interno del file 'numeri_non_validi.txt'.
-    '''
+    
     def lista_numeri_prefisso_sbagliato(self):
+        '''
+        Restituisce la lista dei numeri con prefisso sbagliato all'interno del file 'numeri_non_validi.txt'.
+        '''
         return [item for item in self.__lista if self.prefisso_sbagliato.match(item)]
     
-    '''
-    Metodo statico che permette di aggiungere il prefisso sudafricano '27' ad un numero sprovvisto.
-    '''
+    @staticmethod
     def ripara_senza_prefisso(numero_senza_prefisso):
+        '''
+        Metodo statico che permette di aggiungere il prefisso sudafricano '27' ad un numero sprovvisto.
+        '''
         return "27"+numero_senza_prefisso;
     
-    '''
-    Metodo statico che permette di restituire il numero valido contenuto in un numero non valido.
-    '''
+    @staticmethod
     def ripara_contiene_altro(numero_contiene_altro):
+        '''
+        Metodo statico che permette di restituire il numero valido contenuto in un numero non valido.
+        '''
         return re.search(Helper.contiene_altro,numero_contiene_altro).group()
     
-    '''
-    Metodo statico che permette di aggiungere il prefisso sudafricano '27'
-    al posto del prefisso sbagliato.
-    '''
+    @staticmethod
     def ripara_prefisso_sbagliato(numero_prefisso_sbagliato):
+        '''
+        Metodo statico che permette di aggiungere il prefisso sudafricano '27'
+        al posto del prefisso sbagliato.
+        '''
         return "27"+numero_prefisso_sbagliato[2:]
 
-    '''
-    Crea un file 'numeri_riparati.txt' dove il modulo tenta attraverso varie euristiche
-    di restituire numeri validi a partire dai numeri non validi presenti nel file 'numeri_non_validi.txt'.
-    '''
+    
     def dump_numeri_riparati(self):
+        '''
+        Crea un file 'numeri_riparati.txt' dove il modulo tenta attraverso varie euristiche
+        di restituire numeri validi a partire dai numeri non validi presenti nel file 'numeri_non_validi.txt'.
+        '''
         if os.path.isfile('numeri_riparati.txt'):
             os.remove('numeri_riparati.txt')  
         numeri_senza_prefisso = self.lista_numeri_senza_prefisso()
