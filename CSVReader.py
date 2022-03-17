@@ -18,13 +18,13 @@ class CSVReader:
         self.__numeri_non_validi = None
     
     '''
-    Resituisce la lista dei numeri presenti nel file.
+    Resituisce la lista dei numeri presenti nel file 'data.csv'.
     '''
     def lista_numeri(self):
         return [item[1] for item in self.df.values]
     
     '''
-    Restituisce la lista dei numeri validi presenti nel file.
+    Restituisce la lista dei numeri validi presenti nel file 'data.csv'.
     '''
     def lista_numeri_validi(self):
         if self.__numeri_validi is None:
@@ -32,7 +32,7 @@ class CSVReader:
         return self.__numeri_validi
     
     '''
-    Restituisce la lista dei numeri non validi presenti nel file.
+    Restituisce la lista dei numeri non validi presenti nel file 'data.csv'.
     '''
     def lista_numeri_non_validi(self):
         if self.__numeri_non_validi is None:
@@ -40,7 +40,7 @@ class CSVReader:
         return self.__numeri_non_validi     
     
     '''
-    Salva in un file chiamato "numeri_validi.txt" i numeri validi presenti nel file.
+    Salva in un file chiamato 'numeri_validi.txt' i numeri validi presenti nel file.
     '''
     def dump_lista_numeri_validi(self):
         if os.path.isfile('numeri_validi.txt'):
@@ -49,7 +49,7 @@ class CSVReader:
             for item in self.lista_numeri_validi():
                 f.write("%s\n" % item)
     '''
-    Salva in un file chiamato "numeri_non_validi.txt" i numeri non validi presenti nel file.
+    Salva in un file chiamato 'numeri_non_validi.txt' i numeri non validi presenti nel file.
     '''
     def dump_lista_numeri_non_validi(self):
         if os.path.isfile('numeri_non_validi.txt'):

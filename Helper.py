@@ -9,11 +9,10 @@ class Helper:
     prefisso_sbagliato = re.compile('^[0-9]{11}$')
     contiene_altro = re.compile('27[0-9]{9}')
 
-
-    def __init__(self,file):
-        if not os.path.isfile(file):
+    def __init__(self):
+        if not os.path.isfile('numeri_non_validi.txt'):
             CSVReader('data.csv').dump_lista_numeri_non_validi()
-        with open(file,'r') as f:
+        with open('numeri_non_validi.txt','r') as f:
             self.__lista = f.read().splitlines()
     
     '''
@@ -71,13 +70,13 @@ class Helper:
             f.write("Sono riuscito a ripararne %d.\n\n" % numeri_riparati_count)
             f.write("I seguenti %d numeri ho assunto fossero numeri privi di prefisso:\n\n" % len(numeri_senza_prefisso))
             for item in numeri_senza_prefisso:
-                f.write("%s -> %s\n" % (item,self.ripara_senza_prefisso(item)))
+                f.write("%s -> %s\n" % (item,Helper.ripara_senza_prefisso(item)))
             f.write("\nI seguenti %d contenevano al loro interno un numero valido che ho estrapolato:\n\n" % len(numeri_contengono_altro))
             for item in numeri_contengono_altro:
-                f.write("%s -> %s\n" % (item,self.ripara_contiene_altro(item)))
+                f.write("%s -> %s\n" % (item,Helper.ripara_contiene_altro(item)))
             f.write("\nI seguenti %d ho assunto avessero un prefisso sbagliato:\n\n" % len(numeri_prefisso_sbagliato))
             for item in numeri_prefisso_sbagliato:
-                f.write("%s -> %s\n" % (item,self.ripara_prefisso_sbagliato(item)))
+                f.write("%s -> %s\n" % (item,Helper.ripara_prefisso_sbagliato(item)))
 
 if __name__ == '__main__':
     print("Ciao! Sono il modulo Helper.\nTi aiutero' a capire se il numero che introduci e' un numero sudafricano valido.")
