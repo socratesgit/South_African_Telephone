@@ -2,6 +2,11 @@ from CSVReader import CSVReader
 import os
 import re
 
+'''
+Questo modulo offre euristiche per tentare di riparare numeri non validi.
+Inoltre, è disponibile una versione interattiva da linea di comando se il modulo viene lanciato
+come main.
+'''
 class Helper:
 
     perfect_match = re.compile('^27[0-9]{9}$')

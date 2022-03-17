@@ -19,3 +19,4 @@ Il codice è suddiviso nei seguenti moduli:
 4. Lancia il comando _python run.py_
 
 A questo punto, se non fossero stati già presenti, dovrebbero essere stati generati i file _'numeri\_validi.txt'_, _'numeri\_non\_validi_ e _'numeri\_riparati.txt'_. Inoltre, nella cartella _img_ troverete alcuni grafici prodotti dal programma _run.py_ che danno alcune informazioni rispetto ai risultati delle computazioni dei moduli.
+Qualora si voglia interrogare direttamente il modulo **Helper** per verificare qualche numero, si può inizializzare un programma interattivo da linea di comando con _python Helper.py_.
