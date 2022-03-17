@@ -59,7 +59,11 @@ class CSVReader:
                 f.write("%s\n" % item)
 
 if __name__ == '__main__':
-    reader = CSVReader('data.csv')
+    try:
+        reader = CSVReader('data.csv')
+    except:
+        print("Nella cartella non e' presente un file di nome 'data.csv'")
+        os._exit()
     reader.dump_lista_numeri_validi()
     reader.dump_lista_numeri_non_validi()
     
